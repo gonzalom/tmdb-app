@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-class HomeController extends Controller
+class AppController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -15,12 +13,12 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __invoke()
     {
-        return view('home');
+        return view('app');
     }
 }
