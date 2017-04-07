@@ -8,3 +8,16 @@
 Homestead.json
 Homestead.yaml
 .env
+
+# composer.lock in applications is ignored since it's automatically created by composer when application is installed
+/composer.lock
+
+# IDE Helper
+_ide_helper.php
+.phpstorm.meta.php
+
+# Gulp generated files
+/public/build
+/public/css
+/public/js
+/public/fonts
