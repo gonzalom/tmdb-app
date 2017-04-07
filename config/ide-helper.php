@@ -125,6 +125,7 @@ return array(
             'onceUsingId'   => 'Illuminate\Contracts\Auth\StatefulGuard::onceUsingId',
             'viaRemember'   => 'Illuminate\Contracts\Auth\StatefulGuard::viaRemember',
             'logout'        => 'Illuminate\Contracts\Auth\StatefulGuard::logout',
+            'routes'        => 'Illuminate\Support\Facades\Auth::routes',
         ],
     ),
 
@@ -140,7 +141,7 @@ return array(
 
     'interfaces' => array(
         '\Illuminate\Contracts\Auth\Authenticatable' =>
-            '\App\Models\User|App\Models\Master\Customer|\Illuminate\Contracts\Auth\Authenticatable|null',
+            '\App\Models\User|\Illuminate\Contracts\Auth\Authenticatable|null',
     ),
 
     /*
