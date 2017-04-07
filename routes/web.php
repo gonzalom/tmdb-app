@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['namespace' => 'TMDB', 'prefix' => 'api'], function () {
+Route::group(['namespace' => 'Tmdb', 'prefix' => 'api'], function () {
     Route::resource('movie', 'MovieController', ['only' => [
         'index', 'show'
     ]]);

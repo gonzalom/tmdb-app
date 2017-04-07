@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\TMDB;
+namespace App\Http\Controllers\Tmdb;
 
 use Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-use Tmdb\Api\Genres;
+use Tmdb\Api\Movies;
 
-class GenreController extends Controller
+class MovieController extends Controller
 {
     /**
-     * @var \Tmdb\Api\Genres
+     * @var \Tmdb\Api\Movies
      */
     private $api;
 
     /**
      * Create a new controller instance.
      *
-     * @param \Tmdb\Api\Genres $api
+     * @param \Tmdb\Api\Movies $api
      */
-    public function __construct(Genres $api)
+    public function __construct(Movies $api)
     {
         $this->middleware('auth');
 
@@ -37,27 +36,27 @@ class GenreController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->api->getGenres();
+        // returns a list of a movies
+        return $this->api->getPopular();
     }
 
     /**
      * One movie
      *
-     * @param  Request $request
-     * @param          $id
+     * @param  Request  $request
+     * @param $id
      *
      * @return Response
-     * @throws \HttpResponseException
      */
     public function show(Request $request, $id)
     {
-        $item = $this->api->getGenre($id);
+        $item = $this->api->getMovie($id);
 
         if (!$item) {
-            throw new NotFoundHttpException("The genre $id is not found.");
+            abort(404, "The movie $id is not found.");
         }
 
         // returns information of a movie
-        return response($this->api->getGenre($id));
+        return response($item);
     }
 }
