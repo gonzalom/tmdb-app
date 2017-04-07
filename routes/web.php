@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['namespace' => 'TMDB', 'prefix' => 'api'], function () {
+    Route::resource('movie', 'MovieController', ['only' => [
+        'index', 'show'
+    ]]);
+
+    Route::resource('genre', 'GenreController', ['only' => [
+        'index', 'show'
+    ]]);
+});
