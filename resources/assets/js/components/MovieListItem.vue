@@ -1,6 +1,6 @@
 <template>
     <div class="movies-item">
-        <a :class="{'no-image': noImage}" :href="'/movie/' + movie.id" @click.prevent="openMoviePopup(movie.id, true)">
+        <router-link :class="{'no-image': noImage}" :to="{ name: 'movie', params: { movie: movie.id }}">
             <div class="card">
                 <figure>
                     <img class="img-responsive img-rounded" v-if="!noImage" src="/images/placeholder.png" v-img="poster()" alt="">
@@ -10,7 +10,7 @@
                     <p>{{ movie.title }}</p>
                 </div>
             </div>
-        </a>
+        </router-link>
         <!--<pre>{{ movie }}</pre>-->
     </div>
 </template>

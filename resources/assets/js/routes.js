@@ -4,12 +4,14 @@ const Foo = { template: '<div>foo</div>' };
 const Bar = { template: '<div>bar</div>' };
 
 import Genre from './components/Genre.vue'
+import Movie from './components/Movie.vue'
 import MovieList from './components/MovieList.vue'
 
 let routes = [
     { path: '/app', redirect: '/app/genre' },
 
     //{ name: 'movies', path: '/app/movie', component: MovieList },
+    { name: 'movie', path: '/app/movie/:movie', component: Movie },
     { name: 'genres', path: '/app/genre', component: Genre },
 
     {
