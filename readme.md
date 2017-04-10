@@ -7,6 +7,8 @@
 
 The Movies Database Laravel PHP Framework App.
 
+![Image of Listed Movies](movie-list.png)
+
 ## Description
 
 Create a simple login system using Laravel PHP Framework.
