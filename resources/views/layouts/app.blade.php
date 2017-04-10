@@ -47,12 +47,14 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    @if (!Auth::guest())
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav" v-cloak>
                         <li><router-link to="/app/genre">Genres</router-link></li>
                     </ul>
 
                     <search-movie></search-movie>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
