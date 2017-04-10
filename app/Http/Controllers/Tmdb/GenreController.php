@@ -61,4 +61,27 @@ class GenreController extends Controller
         // returns information of a genre
         return response($item);
     }
+
+    /**
+     * Movies of the genre given.
+     *
+     * @param  Request  $request
+     * @param integer   $genre
+     *
+     * @return Response
+     */
+    public function movies(Request $request, $genre)
+    {
+        $page = $request->has('page') ? $request->get('page') : 1;
+
+        /** @var  $item */
+        $item = $this->api->getMovies($genre, ['page' => $page]);
+
+        if (!$item) {
+            abort(404, "The genre $genre is not found.");
+        }
+
+        // returns information of a genre
+        return response($item);
+    }
 }

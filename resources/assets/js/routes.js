@@ -9,67 +9,28 @@ import MovieList from './components/MovieList.vue'
 let routes = [
     { path: '/app', redirect: '/app/genre' },
 
-    { name: 'movies', path: '/app/movie', component: MovieList },
+    //{ name: 'movies', path: '/app/movie', component: MovieList },
     { name: 'genres', path: '/app/genre', component: Genre },
 
-    { name: 'genre', path: '/app/movie/genre/:id', component: MovieList }
-];
+    {
+        name: 'genre',
+        path: '/app/genre/:genre/movies',
+        components: {
+            'genre-router-view': MovieList
+        }
+    },
 
-// let routes = [
-//     {
-//         name: 'home',
-//         path: '/',
-//         components: {
-//             'list-router-view': require('./components/Home.vue')
-//         }
-//     },
-//     {
-//         name: 'home-category',
-//         path: '/movies/:category',
-//         components: {
-//             'list-router-view': require('./components/MoviesList.vue')
-//         }
-//     },
-//     {
-//         name: 'search',
-//         path: '/search/:query',
-//         components: {
-//             'search-router-view': require('./components/MoviesList.vue')
-//         }
-//     },
-//     {
-//         name: 'movie',
-//         path: '/movie/:id',
-//         components: {
-//             'page-router-view': require('./components/MoviePage.vue')
-//         },
-//         beforeEnter: (to, from, next) => {
-//             if(history.state && history.state.popup){
-//                 eventHub.$emit('openMoviePopup', to.params.id, false);
-//                 return;
-//             }
-//             next();
-//         }
-//     },
-//     {
-//         name: 'profile',
-//         path: '/profile',
-//         components: {
-//             'search-router-view': require('./components/Profile.vue')
-//         }
-//     },
-//     {
-//         name: '404',
-//         path: '/404',
-//         components: {
-//             'page-router-view': require('./components/404.vue')
-//         }
-//     },
-//     {
-//         path: '*',
-//         redirect: '/404'
-//     }
-// ];
+    {
+        name: 'search',
+        path: '/app/search/movie/:query',
+        components: {
+            'search-router-view': MovieList
+        }
+    },
+
+    { name: '404', path: '/404', component: require('./components/404.vue') },
+    { path: '*', redirect: '/404' }
+];
 
 const router =  new VueRouter({
     mode: 'history',

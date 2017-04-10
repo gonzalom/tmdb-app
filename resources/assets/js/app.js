@@ -25,7 +25,7 @@ window.eventHub = new Vue();
 Vue.use(VueRouter, axios);
 
 // Vue.component('example', require('./components/Example.vue'));
-// Vue.component('movieList', require('./components/MovieList.vue'));
+Vue.component('searchMovie', require('./components/SearchMovie.vue'));
 
 const app = new Vue({
     // el: '#app',

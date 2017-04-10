@@ -64,8 +64,8 @@
         components: {
             MovieListItem
         },
-        data(){
-            return{
+        data() {
+            return {
                 listTitle: '',
                 movies: [],
                 pages: '',
@@ -75,33 +75,34 @@
             }
         },
         computed: {
-            pageTitle(){
+            pageTitle() {
                 return this.listTitle + storage.pageTitlePostfix;
             },
-            query(){
-                return '';
-                //return this.$route.params.query || '';
+            query() {
+                return this.$route.params.query || '';
             },
-            request(){
-                //let category = this.$route.params.category || this.category;
-                let genre = false;
+            request() {
+                let genre = this.$route.params.genre || this.genre;
 
-                if(this.mode == 'all'){
+                //console.debug('genre', genre);
+                //console.debug('params', this.$route.params);
+
+                if(this.mode == 'all') {
                     return `/api/movie?page=${this.currentPage}`;
                 }
 
-                if(this.mode == 'search'){
+                if(this.mode == 'search' && this.query) {
                     return `/api/search/movie?query=${this.query}&page=${this.currentPage}`;
                 }
 
-                if(genre){
-                    return `/api/genre/${genre}?page=${this.currentPage}`;
+                if(genre) {
+                    return `/api/genre/${genre}/movies/?page=${this.currentPage}`;
                 }
 
                 return `/api/movie?page=${this.currentPage}`;
             },
-            countResults(){
-                if(this.results > 1){
+            countResults() {
+                if(this.results > 1) {
                     return numeral(this.results).format('0,0') + ' results';
                 } else {
                     return numeral(this.results).format('0,0') + ' result';
@@ -109,36 +110,30 @@
             }
         },
         methods: {
-            fetchMovies(){
+            fetchMovies() {
                 console.log('fetch', this.request);
                 axios.get(this.request)
-                .then(function(resp){
-                    console.log('resp', resp);
+                .then(function(resp) {
+                    //console.log('resp', resp);
                     let data = resp.data;
-                    if(this.shortList){
-                        this.movies = data.results.slice(0, 5);
-                        this.pages = 1;
-                        this.results = 5;
-                    } else {
-                        this.movies = data.results;
-                        this.pages = data.total_pages;
-                        this.results = data.total_results;
-                    }
+                    this.movies = data.results;
+                    this.pages = data.total_pages;
+                    this.results = data.total_results;
                     this.listLoaded = true;
                     // Change Page title
-                    if(this.type == 'page'){
+                    if(this.type == 'page') {
                         document.title = this.pageTitle;
                     }
                 }.bind(this))
                 .catch(function(error) {
                     console.log('error', error);
-                    //this.$router.push({ name: '404' });
+                    this.$router.push({ name: '404' });
                 }.bind(this));
             },
-            loadMore(){
+            loadMore() {
                 this.currentPage++;
                 axios.get(this.request)
-                .then(function(resp){
+                .then(function(resp) {
                     let data = resp.data;
                     let newData = this.movies.concat(data.results);
                     this.movies = newData;
@@ -146,16 +141,16 @@
             }
         },
         watch: {
-            query(value){
+            query(value) {
+                console.debug('query updated', value);
                 this.fetchMovies(value);
             }
         },
-        created(){
+        created() {
             // Set List Title
-            this.listTitle = 'hello';
-            if(this.mode == 'search'){
-                //this.listTitle = storage.categories['search'];
-                //eventHub.$emit('setSearchQuery');
+            if(this.mode == 'search') {
+                this.listTitle = 'Search';
+                eventHub.$emit('setSearchQuery');
             } else if(this.mode == 'genre') {
                 let genre = this.$route.params.genre || this.genre;
                 this.listTitle = storage.genresNames[genre];

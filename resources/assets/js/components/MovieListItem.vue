@@ -1,12 +1,14 @@
 <template>
     <div class="movies-item">
         <a :class="{'no-image': noImage}" :href="'/movie/' + movie.id" @click.prevent="openMoviePopup(movie.id, true)">
-            <figure>
-                <img class="img-responsive img-rounded" v-if="!noImage" src="/images/placeholder.png" v-img="poster()" alt="">
-                <img class="img-responsive img-rounded" v-if="noImage" src="/images/no-image.png" alt="">
-            </figure>
-            <div class="movies-item__content">
-                <h4 class="movies-item__title">{{ movie.title }}</h4>
+            <div class="card">
+                <figure>
+                    <img class="img-responsive img-rounded" v-if="!noImage" src="/images/placeholder.png" v-img="poster()" alt="">
+                    <img class="img-responsive img-rounded" v-if="noImage" src="/images/no-image.png" alt="">
+                </figure>
+                <div class="card-content text-center movies-item__title">
+                    <p>{{ movie.title }}</p>
+                </div>
             </div>
         </a>
         <!--<pre>{{ movie }}</pre>-->
@@ -22,7 +24,7 @@
         }
 
         &__title {
-            height: 40px;
+            height: 80px;
             overflow: hidden;
         }
     }

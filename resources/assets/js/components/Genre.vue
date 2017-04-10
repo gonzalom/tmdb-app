@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" v-for="(genre, index) in genres">
                     <div class="card">
-                        <router-link :to="{ name: 'genre', params: { id: genre.id }}">
+                        <router-link :to="{ name: 'genre', params: { genre: genre.id }}">
                         <div class="card-content text-center">
                             <h3>{{ genre.name }}</h3>
                         </div>
@@ -68,7 +68,7 @@
                 }.bind(this))
                 .catch(function(error) {
                     console.log('error', error);
-                    //this.$router.push({ name: '404' });
+                    this.$router.push({ name: '404' });
                 }.bind(this));
             }
         },

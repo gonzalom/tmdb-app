@@ -36,8 +36,10 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
+        $page = $request->has('page') ? $request->get('page') : 1;
+
         // returns a list of a movies
-        return $this->api->getPopular();
+        return $this->api->getPopular(['page' => $page]);
     }
 
     /**

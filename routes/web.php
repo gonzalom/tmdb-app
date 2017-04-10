@@ -12,19 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect()->route('app');
 });
 
 Auth::routes();
 
 Route::get('/app/{any?}', ['uses' => 'AppController',  'as' => 'app'])->where('any', '.*');
 
-Route::group(['namespace' => 'Tmdb', 'prefix' => 'api'], function () {
+Route::group(['namespace' => 'Tmdb', 'prefix' => 'api', 'as' => 'api.'], function () {
     Route::resource('movie', 'MovieController', ['only' => [
         'index', 'show'
     ]]);
 
+    Route::get('genre/{genre}/movies', ['uses' => 'GenreController@movies', 'as' => 'genre.movies'])
+        ->where('genre', '[0-9]+');
+
     Route::resource('genre', 'GenreController', ['only' => [
         'index', 'show'
     ]]);
+
+    Route::get('search/movie', ['uses' => 'SearchController@movies', 'as' => 'search.movie']);
 });
