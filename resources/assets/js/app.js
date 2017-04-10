@@ -1,3 +1,5 @@
+// import router from './routes'
+// import App from './App.vue'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -7,15 +9,25 @@
 
 require('./bootstrap');
 
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import axios from 'axios'
+import router from './routes'
+
+window.eventHub = new Vue();
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-Vue.component('movieList', require('./components/MovieList.vue'));
+Vue.use(VueRouter, axios);
+
+// Vue.component('example', require('./components/Example.vue'));
+// Vue.component('movieList', require('./components/MovieList.vue'));
 
 const app = new Vue({
-    el: '#app'
-});
+    // el: '#app',
+    router
+}).$mount('#app');

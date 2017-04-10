@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/app', ['uses' => 'AppController',  'as' => 'app']);
+Route::get('/app/{any?}', ['uses' => 'AppController',  'as' => 'app'])->where('any', '.*');
 
 Route::group(['namespace' => 'Tmdb', 'prefix' => 'api'], function () {
     Route::resource('movie', 'MovieController', ['only' => [

@@ -33,6 +33,7 @@
 </style>
 
 <script>
+    import storage from '../storage.js'
     import img from '../directives/v-image.js'
 
     export default{

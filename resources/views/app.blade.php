@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <movie-list>Movie List</movie-list>
+    <router-view></router-view>
 @endsection

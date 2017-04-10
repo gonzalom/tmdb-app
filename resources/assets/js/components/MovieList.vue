@@ -1,6 +1,7 @@
 <template>
-    <div v-if="listLoaded">
-        <div class="movies" v-if="movies.length">
+    <div>
+        <div class="loading-page" v-if="!listLoaded">Loading...</div>
+        <div class="movies" v-if="listLoaded && movies.length">
             <h2>{{ listTitle }}</h2>
 
             <div class="row">
@@ -13,8 +14,7 @@
                 <button @click="loadMore" class="button">Load More</button>
             </div>
         </div>
-        <div v-if="!listLoaded">Loading...</div>
-        <section v-if="!movies.length" class="not-found">
+        <section class="not-found" v-if="listLoaded && !movies.length">
             <div>
                 <h2>Nothing Found</h2>
             </div>
@@ -42,6 +42,7 @@
 <script>
     import axios from 'axios'
     import numeral from 'numeral'
+    import storage from '../storage.js'
     import MovieListItem from './MovieListItem.vue'
 
     export default{
@@ -52,7 +53,7 @@
             },
             mode: {
               type: String,
-              default: 'all'
+              default: 'genre'
             },
             genre: Number,
             shortList: {
@@ -94,7 +95,7 @@
                 }
 
                 if(genre){
-                    return `/api/movie/genre/${genre}?page=${this.currentPage}`;
+                    return `/api/genre/${genre}?page=${this.currentPage}`;
                 }
 
                 return `/api/movie?page=${this.currentPage}`;
@@ -151,12 +152,13 @@
         },
         created(){
             // Set List Title
+            this.listTitle = 'hello';
             if(this.mode == 'search'){
                 //this.listTitle = storage.categories['search'];
                 //eventHub.$emit('setSearchQuery');
             } else if(this.mode == 'genre') {
-                //let category = this.$route.params.category || this.category;
-                //this.listTitle = storage.categories[category];
+                let genre = this.$route.params.genre || this.genre;
+                this.listTitle = storage.genresNames[genre];
             }
             this.fetchMovies();
         }
