@@ -1,51 +1,54 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# The Movies Database App
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+[![Build Status][ico-travis]][link-travis]
+[![Software License][ico-license]](LICENSE.md)
 
-## About Laravel
+## About
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+The Movies Database Laravel PHP Framework App.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Description
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Create a simple login system using Laravel PHP Framework.
 
-## Learning Laravel
+When a user correctly logs in to the system the user should see a form with a list of movie genres.
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+When the user chooses a genre, movies from that genre are retrieved and displayed on the page without reloading.
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+The user can then select a movie to see more details about the movie, again without reloading the page.
 
-## Laravel Sponsors
+The user should also see an input box to search for movies by name. Please display the results in the same way as the genre results.
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+The Genres and Movies should be returned using the API from https://www.themoviedb.org/documentation/api. You will need to register to gain access to the API, see the FAQ for details https://www.themoviedb.org/faq/api
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- **[Codecourse](https://www.codecourse.com)**
-- [Fragrantica](https://www.fragrantica.com)
+The purpose of this project is to determine your approach to the problem. Feel free to use any PHP and JavaScript tools you are comfortable with.
+
+If this test cannot be completed to your satisfaction, please state how you would improve upon your method if you had the time.
+
+## Installation
+
+Clone the project with the following command:
+
+```bash
+git clone git@github.com:gonzalom/tmdb-app.git
+```
+
+
+## Issues
+   
+Bug reports and feature requests can be submitted on the [Github Issue Tracker](https://github.com/gonzalom/tmdb-app/issues).
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for information.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The Laravel Model Base is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://travis-ci.org/gonzalom/tmdb-app.svg?branch=master
+
+[link-travis]: https://travis-ci.org/gonzalom/tmdb-app
+[link-author]: https://github.com/gonzalom
