@@ -18,6 +18,7 @@
 <style lang="scss">
     .movies-item {
         text-align: center;
+        height: 425px;
 
         &__content {
             padding-top: 5px;
