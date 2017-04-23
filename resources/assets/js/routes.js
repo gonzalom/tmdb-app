@@ -6,6 +6,7 @@ const Bar = { template: '<div>bar</div>' };
 import Genre from './components/Genre.vue'
 import Movie from './components/Movie.vue'
 import MovieList from './components/MovieList.vue'
+import NotFound from './components/404.vue'
 
 let routes = [
     { path: '/app', redirect: '/app/genre' },
@@ -30,8 +31,8 @@ let routes = [
         }
     },
 
-    { name: '404', path: '/404', component: require('./components/404.vue') },
-    { path: '*', redirect: '/404' }
+    { name: '404', path: '/app/404', component: NotFound },
+    { path: '/app/*', redirect: '/app/404' }
 ];
 
 const router =  new VueRouter({
